@@ -1,9 +1,5 @@
+@import "./global.scss";
 @import "~component/header/header";
 @import "~component/footer/footer";
 @import "~page/index/index";
-
-body {
-    width: 100vw;
-    height: 100vh;
-    background: url('../img/logo-desktop.png') gray center center no-repeat;
-}
+@import "~page/page1/page1"

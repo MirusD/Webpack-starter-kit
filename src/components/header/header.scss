@@ -2,5 +2,13 @@
 
 .header {
     text-align: center;
-    background-color: green;
+    background-color: gray;
+
+    &__title  {
+        padding: 30px;
+    }
+
+    &__menu {
+        padding: 20px 0;
+    }
 }

@@ -4,8 +4,9 @@ block title
     | Index
 block main
     .section
-        .container
-            h1 Hello, I am webpack starter kit!
-            img(src=require("../../assets/img/logo-desktop.png").default, alt="")
-            img(src=require("./img/mopsa.jpg").default, alt="")
-            a(href="about.html") about
+        .section__container
+            h1(class="section__title") Hello, I am webpack starter kit!
+            .section__img
+                img(class="section__icon" src=require("./img/pug.jpg").default, alt="")
+                img(class="section__icon" src=require("./img/webpack.jpg").default, alt="")
+                img(class="section__icon" src=require("./img/logo-sass.png").default, alt="")

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const fs = require('fs');
@@ -40,7 +41,10 @@ module.exports = {
         }
     },
     devServer: {
-        hot: isDev,
+        contentBase: false,
+        overlay: true,
+        // writeToDisk: true,
+        // hot: isDev,
         port: 9000,
     },
     devtool: isDev ? 'source-map' : false,
@@ -126,13 +130,25 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './pages/index/index.pug',
             // filename: filename('index', 'html'),
-            minify: isProd
+            minify: isProd,
+            inject: 'body',
+            hash: true
         }),
         ...pages.map(page => new HtmlWebpackPlugin({
             template: `./pages/${page}/${page}.pug`,
-            filename: filename(page, 'html'),
-            minify: isProd
+            filename: `${page}.html`,
+            minify: isProd,
+            inject: 'body',
+            hash: true
           })),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'assets/favicon/favicon.ico',
+                    to: path.resolve(__dirname, 'dist/assets/favicon/')
+                }
+            ]
+        }),
         new CleanWebpackPlugin(),  
     ],
 };

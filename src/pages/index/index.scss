@@ -1,3 +1,18 @@
 .section {
-    background: url("./img/mopsa.jpg");
+    margin: 50px 0;
+
+    &__img {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__icon {
+        width: 300px;
+        height: auto;
+    }
+
+    &__title {
+       text-align: center;
+    }
 }

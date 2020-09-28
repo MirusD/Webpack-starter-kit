@@ -1,4 +1,15 @@
 .footer {
-    text-align: center;
-    background-color: yellow;
+    padding: {
+        top: 10px;
+        bottom: 10px;
+    }
+    background-color: gray;
+
+    &__container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }

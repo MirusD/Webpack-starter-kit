@@ -8,25 +8,6 @@ mixin menu(options)
         - options.items = []
     
     .menu
-        each name in options.items
-            a.menu__items(href="#")= name
+        each link in options.items
+            a.menu__items(href=link.href)= link.text
 
-//-   .menu.js-menu
-//-     .menu__button.js-menu__button
-//-       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900").button__icon.js-button__icon
-//-         g.button__dashes
-//-           path(d="M145 609l609 0c74,0 74,111 0,111l-609 0c-74,0 -74,-111 0,-111z").button__dash_bottom.button__icon_dash
-//-           path(d="M146 394c203,0 406,0 609,0 74,0 74,111 0,111 -203,0 -406,0 -609,0 -74,0 -74,-111 0,-111z").button__dash_middle.button__icon_dash
-//-           path(d="M146 179l609 0c74,0 74,111 0,111l-609 0c-74,0 -74,-111 0,-111z").button__dash_top.button__icon_dash
-    //-   ul.menu__list.js-menu__list
-    //-     for item in options.items
-    //-       if (!item.submenu)
-    //-         li.menu__item(class = item.active === true ? 'menu__item_active':'')
-    //-           a.menu__link(href = item.href)= item.name
-    //-       else
-    //-         li.menu__item.menu__item_with-submenus(class = item.active === true ? 'menu__item_active':'')
-    //-           a.menu__link.menu__link_with-submenus(href = item.href)= item.name
-    //-           ul.menu__submenu
-    //-             each submenu in item.submenu
-    //-               li.menu__submenu-item(class = item.active === true ? 'menu__item_active':'')
-    //-                 a.menu__submenu-link(href = submenu.href)= submenu.name

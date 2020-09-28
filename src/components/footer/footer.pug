@@ -1,3 +1,5 @@
+include ~component/menu/menu
+
 //-
     options.name - comments
 
@@ -6,4 +8,13 @@ mixin footer(options)
         - options = {}
 
     footer(class="footer")
-        h1 FOOTER
+        .footer__container
+            h1(class="footer__title") FOOTER
+            .footer__menu
+                +menu({
+                    items: [
+                        {text: 'Page1', href: 'page1.html'},
+                        {text: 'Page2', href: 'page2.html'},
+                        {text: 'Page3', href: 'page3.html'},
+                    ]
+                })

@@ -10,12 +10,13 @@ mixin header(options)
         - options.items = []
     
     header(class="header")
-        h1 HEADER
-        +menu({
-            items: [
-                'Home',
-                'About',
-                'Price',
-                'Persone'
-                ]
-        })
+        .header__container
+            h1(class="header__title") HEADER
+            .header__menu
+                +menu({
+                    items: [
+                        {text: 'Home', href: 'index.html'},
+                        {text: 'Page1', href: 'page1.html'},
+                        {text: 'Page2', href: 'page2.html'}
+                    ]
+                })
