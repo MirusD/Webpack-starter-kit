@@ -1,0 +1,21 @@
+include ~component/menu/menu
+
+//-
+  options.items - массив с элементами меню
+
+mixin header(options)
+    if !options
+        - options = {}
+    if !options.items
+        - options.items = []
+    
+    header(class="header")
+        h1 HEADER
+        +menu({
+            items: [
+                'Home',
+                'About',
+                'Price',
+                'Persone'
+                ]
+        })

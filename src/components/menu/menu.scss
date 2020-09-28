@@ -1,0 +1,13 @@
+.menu {
+    color: white;
+
+    &__items {
+        color: white;
+        text-decoration: none;
+        margin: 10px;
+        
+        &:hover {
+            color: yellow;
+        }
+    }
+}

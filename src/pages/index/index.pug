@@ -1,0 +1,11 @@
+extends ~page/base/base.pug
+
+block title
+    | Index
+block main
+    .section
+        .container
+            h1 Hello, I am PUG!
+            img(src=require("../../assets/img/logo-desktop.png").default, alt="")
+            //- img(src=require("./img/mopsa.jpg").default, alt="")
+            a(href="about.html") about
