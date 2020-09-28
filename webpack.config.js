@@ -12,7 +12,7 @@ const isProd = !isDev;
 const pages =
   fs
     .readdirSync(path.resolve(__dirname, 'src/pages/'))
-    .filter(file => file !== 'base')
+    .filter(file => file !== 'base' && file !== 'index')
     .map(file => file.split('/',2))
 
 const filename = (namefile, ext) => isProd ? `${namefile}.${ext}` : `${namefile}.[hash].${ext}`    
@@ -40,9 +40,8 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: './dist',
-        port: 3000,
-        // hot: isDev
+        hot: isDev,
+        port: 9000,
     },
     devtool: isDev ? 'source-map' : false,
     module: {
@@ -110,22 +109,30 @@ module.exports = {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
                     {
-                        loader: 'file-loader', 
+                        loader: 'file-loader',
+                        options: {
+                            name: filename('[name]','[ext]'),
+                            outputPath: './assets/fonts/',
+                        }
                     }
                 ],
             },
         ]    
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `./assets/styles/${filename('[name]', 'css')}`,
+        }),
+        new HtmlWebpackPlugin({
+            template: './pages/index/index.pug',
+            // filename: filename('index', 'html'),
+            minify: isProd
         }),
         ...pages.map(page => new HtmlWebpackPlugin({
             template: `./pages/${page}/${page}.pug`,
             filename: filename(page, 'html'),
-            publicPath: './',
             minify: isProd
-          }))
+          })),
+        new CleanWebpackPlugin(),  
     ],
 };
